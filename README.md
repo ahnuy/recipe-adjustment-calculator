@@ -1,6 +1,6 @@
-# **Design Document: Recipe Adjustment Calculator**
+# Recipe Adjustment Calculator
 
-## **Description of the program**
+## Description of the program
 
 Recipe Adjustment Calculator reads recipes a recipe chosen by the user in from a file or creates a new one if they want to use their own recipe.  Then it adjusts the recipe to any desired factor by printing the current recipe’s serving size and asking the user how many servings they would like to serve. It rounds the amounts and units to simpler measurements that are helpful in the kitchen. 
 
@@ -20,7 +20,7 @@ You can also see the measurements have been rounded to easy to read numbers. For
 
  
 
-## **Inputs to the program**
+## Inputs to the program
 
 - which recipe the user would like to see
   - if the user chooses one of the existing files, the file is prefilled with the recipe name, number of servings and ingredients listed with their amount as a fraction, unit (if applicable) and ingredient name
@@ -33,7 +33,7 @@ You can also see the measurements have been rounded to easy to read numbers. For
     - name of the ingredient
 - how many new servings the user wants
 
-## **Outputs to the program**
+## Outputs to the program
 
 - a file filled with 
   - the recipe’s title
@@ -41,9 +41,9 @@ You can also see the measurements have been rounded to easy to read numbers. For
   - adjusted amounts and units (if applicable and rounded to easy to read measurements used in the kitchen)
   - the ingredient name
 
-## **Classes**
+## Classes
 
-### **Fraction class**
+### Fraction class
 
 | **Fields**                 |                                               |
 | -------------------------- | --------------------------------------------- |
@@ -63,7 +63,7 @@ You can also see the measurements have been rounded to easy to read numbers. For
 | private static boolean **isWholeNumber**(double d)       | Returns true if the number in the parameter is a whole number. This method is private because it’s only used by other methods in the class. |
 | private MixedFraction **toMixedFraction** (int n, int d) | Converts an improper fraction into a mixed fraction.         |
 
-### **MixedFraction class (extends Fraction)**
+### MixedFraction class (extends Fraction)
 
 | **Fields** |                                            |
 | ---------- | ------------------------------------------ |
@@ -76,7 +76,7 @@ You can also see the measurements have been rounded to easy to read numbers. For
 | public String **display**()                   | Displays the mixed fraction in the form “whole number-numerator/denominator”. Only returns the whole number if the numerator is equal to zero. |
 | public Fraction **toImproper**()              | Converts a mixed fraction into an improper fraction.         |
 
-###  Main class
+### Main class
 
 | **Fields**                              |                                                              |
 | --------------------------------------- | ------------------------------------------------------------ |
@@ -97,5 +97,3 @@ You can also see the measurements have been rounded to easy to read numbers. For
 | public void **conversion** (ArrayList<Fraction> a, ArrayList<String> u) | Converts the amount and unit for a few ingredients into a simpler measurement. Rounds amounts larger than ½ using **roundToQuarter**. It rounds ≈ 1 cup to 48 tsp, ≈ 3 tsp  to  1 tbsp and ≈ 16 tbsp to 1 cup. Replaces the the amount in **a** and unit in **u** with the conversions. |
 | public String **chooseRecipe**() throws IOException          | Asks the user which recipe they would like to see by entering a, b or c. If the user enters c, it proceeds to ask a series of questions so the program can create a new recipe file to read from. Adds the appropriate information to the new file based on the user’s input. It returns the name of the recipe. |
 | public static void **main**(String[] args) throws IOException | Reads the recipe file chosen and asks the user how many new serving they want their recipe to make. Prints the title, user’s input number of servings and ingredients heading to the new file. Calls **separateIngredientsList**, **newAmount** and **conversion** to calculate the new adjusted amounts and units. It then prints the values in **adjustedAmount**, **unit** and **ingredient** to the new file. |
-
- 
